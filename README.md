@@ -27,6 +27,10 @@ python data/synth/make_banking77_replies.py; python data/prepare_uc1.py; python 
 
 # 1. Create the VM (starts billing about $0.53/hr) + budget alert + SSH locked to your IP + nightly auto-shutdown
 ./azure/vm/create_vm.ps1 -AlertEmail <your-email>
+
+# 1 (alternative). Same resources with Terraform; `terraform destroy` removes them all
+cd azure/terraform; cp terraform.tfvars.example terraform.tfvars   # fill in subscription_id + alert_email
+terraform init; terraform apply                                     # prints public_ip + ssh_command
 ```
 ```bash
 # 2. Git Bash: push code, set up the GPU (the first run reboots, so run it twice)
@@ -64,10 +68,10 @@ Ollama 0.40.x imports safetensors only through its MLX engine, which doesn't sup
 ## Cost control
 - `az vm deallocate -g rg-sd-finetune -n vm-sd-ft` after every session. When deallocated, only the disk and IP are billed.
 - Auto-shutdown runs nightly at 18:30 UTC, and budget alerts fire at $25 and $50.
-- When finished: `az group delete -n rg-sd-finetune --yes` removes everything.
+- When finished: `az group delete -n rg-sd-finetune --yes` removes everything (or `terraform destroy` if you created it with Terraform).
 
 ## Layout
-`src/prompts.py` holds the prompts shared by training and eval · `src/train.py` is the LoRA SFT trainer (fp32 base + fp16 autocast, resumes from checkpoints) · `src/evaluate.py` runs base / base_fewshot / finetuned · `src/metrics.py` · `src/make_report.py` · `azure/vm/*` holds the VM create, setup, run and sync scripts · `configs/uc*.yaml` holds the hyperparameters.
+`src/prompts.py` holds the prompts shared by training and eval · `src/train.py` is the LoRA SFT trainer (fp32 base + fp16 autocast, resumes from checkpoints) · `src/evaluate.py` runs base / base_fewshot / finetuned · `src/metrics.py` · `src/make_report.py` · `azure/vm/*` holds the VM create, setup, run and sync scripts · `azure/terraform/*` is the Terraform version of `create_vm.ps1` · `configs/uc*.yaml` holds the hyperparameters.
 
 ## Version notes (found by the CPU smoke test)
 - transformers 5.x removed `warmup_ratio`. Use `warmup_steps=<float in [0,1)>` instead.

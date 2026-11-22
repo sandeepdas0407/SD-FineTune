@@ -1,0 +1,11 @@
+# Copy to terraform.tfvars (git-ignored) and fill in.
+subscription_id = "00000000-0000-0000-0000-000000000000" # az account show --query id -o tsv
+alert_email     = "you@example.com"
+
+# Optional overrides
+# location            = "eastus"
+# vm_size             = "Standard_NC4as_T4_v3"
+# ssh_public_key_path = "~/.ssh/id_rsa.pub"
+# allowed_ssh_cidr    = "203.0.113.10/32"   # default: auto-detect your current IP
+# shutdown_time_utc   = "1830"
+# budget_usd          = 50

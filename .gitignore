@@ -6,3 +6,9 @@ results/**/predictions_*.jsonl
 *.log
 .env
 logs/
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+crash.log
