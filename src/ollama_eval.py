@@ -50,8 +50,15 @@ def chat(model, text, max_tokens):
                        "options": {"num_predict": max_tokens},
                        "messages": [{"role": "user", "content": text}]}).encode()
     req = urllib.request.Request(URL, body, {"Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=900) as r:
-        return json.load(r)["message"]["content"].strip()
+    for attempt in range(4):  # a stalled request (sleep, memory pressure) is retried, not fatal
+        try:
+            with urllib.request.urlopen(req, timeout=180) as r:
+                return json.load(r)["message"]["content"].strip()
+        except (TimeoutError, OSError) as e:
+            print(f"  attempt {attempt + 1}/4 failed ({type(e).__name__}: {e})", flush=True)
+            if attempt < 3:
+                time.sleep(10)
+    raise RuntimeError(f"Ollama did not answer after 4 attempts ({model})")
 
 
 def main():

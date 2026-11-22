@@ -1,0 +1,76 @@
+{
+  "uc2": {
+    "n": 770,
+    "base": {
+      "ollama_cpu_q8": {
+        "n": 770,
+        "intent_accuracy": 0.4104,
+        "intent_macro_f1": 0.3683,
+        "json_valid_rate": 1.0,
+        "label_in_set_rate": 0.9818
+      },
+      "gpu_fp16_same_ids": {
+        "n": 770,
+        "intent_accuracy": 0.3987,
+        "intent_macro_f1": 0.3549,
+        "json_valid_rate": 0.9987,
+        "label_in_set_rate": 0.9714
+      }
+    },
+    "finetuned": {
+      "ollama_cpu_q8": {
+        "n": 770,
+        "intent_accuracy": 0.8675,
+        "intent_macro_f1": 0.8663,
+        "json_valid_rate": 1.0,
+        "label_in_set_rate": 0.9987
+      },
+      "gpu_fp16_same_ids": {
+        "n": 770,
+        "intent_accuracy": 0.8649,
+        "intent_macro_f1": 0.8631,
+        "json_valid_rate": 1.0,
+        "label_in_set_rate": 0.9987
+      }
+    }
+  },
+  "uc1": {
+    "n": 100,
+    "base": {
+      "ollama_cpu_q8": {
+        "n": 100,
+        "rougeL_f1": 0.2202,
+        "placeholder_rate": 0.33,
+        "placeholder_rate_reference": 0.45,
+        "numbered_steps_agreement": 0.66,
+        "length_ratio_median": 0.683
+      },
+      "gpu_fp16_same_ids": {
+        "n": 100,
+        "rougeL_f1": 0.2164,
+        "placeholder_rate": 0.15,
+        "placeholder_rate_reference": 0.45,
+        "numbered_steps_agreement": 0.64,
+        "length_ratio_median": 0.772
+      }
+    },
+    "finetuned": {
+      "ollama_cpu_q8": {
+        "n": 100,
+        "rougeL_f1": 0.3911,
+        "placeholder_rate": 0.43,
+        "placeholder_rate_reference": 0.45,
+        "numbered_steps_agreement": 0.87,
+        "length_ratio_median": 0.985
+      },
+      "gpu_fp16_same_ids": {
+        "n": 100,
+        "rougeL_f1": 0.3719,
+        "placeholder_rate": 0.47,
+        "placeholder_rate_reference": 0.45,
+        "numbered_steps_agreement": 0.82,
+        "length_ratio_median": 0.997
+      }
+    }
+  }
+}
