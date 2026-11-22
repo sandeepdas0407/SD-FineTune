@@ -2,6 +2,12 @@
 
 This project fine-tunes **Qwen2.5-1.5B-Instruct** with LoRA on one Azure `Standard_NC4as_T4_v3` VM (eastus, about $0.53/hr), then compares outputs **before and after** fine-tuning on two customer-support use cases. See [PLAN.md](PLAN.md) for the full plan and its validation rounds.
 
+**Repository:** https://github.com/sandeepdas0407/SD-FineTune
+
+```bash
+git clone https://github.com/sandeepdas0407/SD-FineTune.git
+```
+
 | Use case | Data | What improves |
 |---|---|---|
 | UC1: support replies | Bitext customer-support (27 intents, real) | House style, `{{Placeholder}}` use, structure (ROUGE-L, placeholder rate, Claude A/B judge) |
