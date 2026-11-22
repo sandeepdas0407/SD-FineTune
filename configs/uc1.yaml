@@ -1,0 +1,22 @@
+name: uc1
+task: support_reply            # Bitext customer-support replies
+base_model: Qwen/Qwen2.5-1.5B-Instruct
+data_dir: data/processed/uc1
+output_dir: outputs/uc1
+results_dir: results/uc1
+max_seq_len: 768
+max_new_tokens: 300
+lora: {r: 16, alpha: 32, dropout: 0.05}
+train:
+  epochs: 2
+  lr: 2.0e-4
+  per_device_batch: 4
+  grad_accum: 4                # effective batch 16
+  warmup_ratio: 0.03
+  eval_steps: 100
+  save_steps: 100
+  seed: 42
+eval:
+  batch_size: 16
+  fewshot_k: 3
+  dtype: float16               # switch to float32 if fp16 outputs look broken

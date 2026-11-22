@@ -1,0 +1,10 @@
+FROM C:/Users/sande/OneDrive/Documents/SD-FineTune/outputs/gguf/sd-base-q8_0.gguf
+TEMPLATE """{{- range .Messages }}<|im_start|>{{ .Role }}
+{{ .Content }}<|im_end|>
+{{ end }}<|im_start|>assistant
+"""
+SYSTEM """You are a customer support assistant for an online retail company. Reply to the customer's message helpfully and politely. When you need customer- or company-specific details you don't know (order number, website URL, phone number, etc.), write a placeholder in double curly braces, e.g. {{Order Number}} or {{Customer Support Phone Number}}."""
+PARAMETER temperature 0
+PARAMETER num_ctx 4096
+PARAMETER stop "<|im_end|>"
+PARAMETER stop "<|endoftext|>"

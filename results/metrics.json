@@ -1,0 +1,57 @@
+{
+  "uc1": {
+    "base": {
+      "n": 270,
+      "rougeL_f1": 0.2215,
+      "placeholder_rate": 0.2222,
+      "placeholder_rate_reference": 0.4741,
+      "numbered_steps_agreement": 0.6519,
+      "length_ratio_median": 0.805
+    },
+    "base_fewshot": {
+      "n": 270,
+      "rougeL_f1": 0.2258,
+      "placeholder_rate": 0.4852,
+      "placeholder_rate_reference": 0.4741,
+      "numbered_steps_agreement": 0.5704,
+      "length_ratio_median": 1.182
+    },
+    "finetuned": {
+      "n": 270,
+      "rougeL_f1": 0.3894,
+      "placeholder_rate": 0.4778,
+      "placeholder_rate_reference": 0.4741,
+      "numbered_steps_agreement": 0.8444,
+      "length_ratio_median": 1.017
+    }
+  },
+  "uc2": {
+    "base": {
+      "n": 770,
+      "intent_accuracy": 0.3987,
+      "intent_macro_f1": 0.3549,
+      "json_valid_rate": 0.9987,
+      "label_in_set_rate": 0.9714
+    },
+    "base_fewshot": {
+      "n": 770,
+      "intent_accuracy": 0.4377,
+      "intent_macro_f1": 0.4152,
+      "json_valid_rate": 0.9961,
+      "label_in_set_rate": 0.9442
+    },
+    "finetuned": {
+      "n": 770,
+      "intent_accuracy": 0.8649,
+      "intent_macro_f1": 0.8631,
+      "json_valid_rate": 1.0,
+      "label_in_set_rate": 0.9987
+    }
+  },
+  "uc1_judge": {
+    "finetuned_wins": 15,
+    "base_wins": 5,
+    "ties": 10,
+    "ft_win_rate_excl_ties": 0.75
+  }
+}
